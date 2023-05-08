@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width , initial-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        body {
+            background: rgb(99, 39, 120)
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #BA68C8
+        }
+
+        .profile-button {
+            background: rgb(99, 39, 120);
+            box-shadow: none;
+            border: none
+        }
+
+        .profile-button:hover {
+            background: #682773
+        }
+
+        .profile-button:focus {
+            background: #682773;
+            box-shadow: none
+        }
+
+        .profile-button:active {
+            background: #682773;
+            box-shadow: none
+        }
+
+        .back:hover {
+            color: #682773;
+            cursor: pointer
+        }
+
+        .labels {
+            font-size: 11px
+        }
+
+        .add-experience:hover {
+            background: #BA68C8;
+            color: #fff;
+            cursor: pointer;
+            border: solid 1px #BA68C8
+        }
+    </style>
+</head>
+<body>
+<div classname="snippet-body">
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img id="changePicture"  width="225" class="mt-5">
+                    <span id="user-oldName" class="font-weight-bold">Edogaru</span>
+                    <span id="user-oldEmail" class="text-black-50">edogaru@mail.com.my</span>
+                    <span> </span>
+                </div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Profile Settings</h4>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6"><label class="labels">Name</label><input id="user-name"
+                                                                                       type="text"
+                                                                                       class="form-control"
+                                                                                       placeholder="first name"
+                                                                                       value=""></div>
+                        <div class="col-md-6"><label class="labels">Username</label><input id="user-username"
+                                                                                           type="text"
+                                                                                           class="form-control" value=""
+                                                                                           placeholder="username"></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12"><label class="labels">Password</label><input id="user-password"
+                                                                                            type="text"
+                                                                                            class="form-control"
+                                                                                            placeholder="password"
+                                                                                            value=""></div>
+                        <div class="col-md-12"><label class="labels">Birthday</label><input id="user-birthday"
+                                                                                            type="text"
+                                                                                            class="form-control"
+                                                                                            placeholder="2020-06-25"
+                                                                                            value=""></div>
+                        <div class="col-md-12"><label class="labels">Select Picture</label><br><input id="user-picture"
+                                                                                                      type="file"
+                                                                                                      placeholder="enter picture"
+                                                                                                      value=""></div>
+                        <div class="col-md-12"><label class="labels">Email</label><input id="user-email"
+                                                                                         type="email"
+                                                                                         class="form-control"
+                                                                                         placeholder="email" value="">
+                        </div>
+                    </div>
+                    <div class="mt-5 text-center">
+                        <button class="btn btn-primary profile-button" type="button" onclick="sendInfo()">Save Profile</button>
+                        <br>
+                        <a href="user-profile.html"><button class="btn btn-primary profile-button" type="button" style="margin: 9px; width: 110px"> Back</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</body>
+<script>
+    let userId;
+    let token = localStorage.getItem('access_token');
+    if ( token === undefined || token === null) {
+        window.location.replace("login.html");
+    }
+    fetch('https://edubin-axror.herokuapp.com/home/me/' + token,{
+        headers: {
+            'Authorization': token
+        }
+    })
+        .then(data => data.json())
+        .then((dataJson) => {
+            console.log(dataJson);
+            userId=dataJson.id;
+            let currentUser = document.getElementById('currentUser');
+            let currentPicture;
+            const imageElement = document.getElementById('changePicture');
+
+            if (dataJson.picture!=null){
+                currentPicture="https://edubin-axror.herokuapp.com/api/image/"+dataJson.picture;
+            }else {
+                currentPicture="images/images3.png";
+            }
+            imageElement.setAttribute('src', currentPicture);
+            // imageElement.setAttribute("style","border-radius: 50%;");
+            const nameSpan = document.getElementById('user-oldName');
+            const emailSpan = document.getElementById('user-oldEmail');
+            nameSpan.innerText = dataJson.name;
+            emailSpan.innerText = dataJson.email;
+
+        })
+
+    function sendInfo(){
+        const formData = new FormData();
+        console.log(userId)
+        formData.append("username", document.getElementById("user-username").value);
+        formData.append("password", document.getElementById("user-password").value);
+        formData.append("name", document.getElementById("user-name").value);
+        formData.append("email", document.getElementById("user-email").value);
+        formData.append("birthDay", document.getElementById("user-birthday").value);
+        if (document.getElementById("user-picture").files[0]!==null && document.getElementById("user-picture").files[0]!==undefined){
+            formData.append("picture",document.getElementById("user-picture").files[0]);
+        }
+        fetch('https://edubin-axror.herokuapp.com/api/employee/update/himself/'+userId,{
+            method: 'PUT',
+            body: formData,
+        })
+            .then((dataJson)=>{
+                console.log(dataJson)
+                window.location.replace("user-profile.html");
+            })
+    }
+
+</script>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>Bootstrap Profile Page Design - Bootsnipp.com</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <style>
+    body{
+      background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    }
+    .emp-profile{
+      padding: 3%;
+      margin-top: 3%;
+      margin-bottom: 3%;
+      border-radius: 0.5rem;
+      background: #fff;
+    }
+    .profile-img{
+      text-align: center;
+    }
+    .profile-img img{
+      width: 70%;
+      height: 100%;
+    }
+    .profile-img .file {
+      position: relative;
+      overflow: hidden;
+      margin-top: -20%;
+      width: 70%;
+      border: none;
+      border-radius: 0;
+      font-size: 15px;
+      background: #212529b8;
+    }
+    .profile-img .file input {
+      position: absolute;
+      opacity: 0;
+      right: 0;
+      top: 0;
+    }
+    .profile-head h5{
+      color: #333;
+    }
+    .profile-head h6{
+      color: #0062cc;
+    }
+    .profile-edit-btn{
+      border: none;
+      border-radius: 1.5rem;
+      width: 70%;
+      padding: 2%;
+      font-weight: 600;
+      color: #6c757d;
+      cursor: pointer;
+    }
+    .proile-rating{
+      font-size: 12px;
+      color: #818182;
+      margin-top: 5%;
+    }
+    .proile-rating span{
+      color: #495057;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .profile-head .nav-tabs{
+      margin-bottom:5%;
+    }
+    .profile-head .nav-tabs .nav-link{
+      font-weight:600;
+      border: none;
+    }
+    .profile-head .nav-tabs .nav-link.active{
+      border: none;
+      border-bottom:2px solid #0062cc;
+    }
+    .profile-work{
+      padding: 14%;
+      margin-top: -15%;
+    }
+    .profile-work p{
+      font-size: 12px;
+      color: #818182;
+      font-weight: 600;
+      margin-top: 10%;
+    }
+    .profile-work a{
+      text-decoration: none;
+      color: #495057;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .profile-work ul{
+      list-style: none;
+    }
+    .profile-tab label{
+      font-weight: 600;
+    }
+    .profile-tab p{
+      font-weight: 600;
+      color: #0062cc;
+    }    </style>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container emp-profile">
+  <form method="post">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="profile-img" id="user-oldPicture">
+<!--          <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>-->
+
+
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="profile-head">
+          <h5 id="user-name">
+            Kshiti Ghelani
+          </h5>
+          <h6 id="user-authority">
+            Web Developer and Designer
+          </h6>
+          <p class="proile-rating">Birthday : <span id="user-birthday">7-iyun 1999 yil</span></p>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Social medias</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div>&nbsp;</div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="profile-work">
+          <p></p>
+          <h6>Your Ordered List</h6>
+          <a href="myCourses.html" style="border-radius: 9px; margin: 5px; padding: 5px 10px; background-color: #ccc; color: #000; text-decoration: none;">Your courses</a>
+          <span id="user-course">0</span>
+          <p></p>
+          <a href="myBooks.html" style="border-radius: 9px; margin: 5px; padding: 5px 10px; background-color: #ccc; color: #000; text-decoration: none;">Your Books</a>
+          <span id="user-book">0</span><br/>
+
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="tab-content profile-tab" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="row">
+              <div class="col-md-6">
+                <label>Username</label>
+              </div>
+              <div class="col-md-6">
+                <p id="user-username">Kshiti123</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Name</label>
+              </div>
+              <div class="col-md-6">
+                <p id="user-name1">Kshiti Ghelani</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Email</label>
+              </div>
+              <div class="col-md-6">
+                <p id="user-email">kshitighelani@gmail.com</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Authority</label>
+              </div>
+              <div class="col-md-6">
+                <p id="user-authority1">Web Developer and Designer</p>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="row">
+              <div class="col-md-6">
+                <label>date of registration</label>
+              </div>
+              <div class="col-md-6">
+                <p id="user-startOn">10 avgust 2023 yil</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Your Instagram</label>
+              </div>
+              <div class="col-md-6">
+                <p id="user-instagram">instagram</p>
+              </div>
+              <div class="col-md-6">
+                <label>Your Twitter</label>
+              </div>
+              <div class="col-md-6">
+                <p id="user-twitter">twitter</p>
+              </div>
+              <div class="col-md-6">
+                <label>Your Facebook</label>
+              </div>
+              <div class="col-md-6">
+                <p id="user-facebook">facebook</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2" id="superAdmin">
+
+    </div>
+    <div class="col-md-2">
+      <a href="user-crud-profile.html" type="submit" class="profile-edit-btn">Edit Profile</a>
+    </div>
+    <div class="col-md-2">
+      <a href="#" type="submit" class="profile-edit-btn" name="btnAddMore" onclick="logOut()">Log out</a>
+    </div>
+  </form>
+</div>
+<script type="text/javascript">
+</script>
+</body>
+<script>
+  function logOut(){
+    const token = localStorage.getItem('access_token');
+    if (token) {
+      localStorage.removeItem('access_token');
+      window.location.href = 'index.html';
+    }
+  }
+</script>
+<script>
+  let token = localStorage.getItem('access_token');
+  if ( token === undefined || token === null) {
+    window.location.replace("login.html");
+  }
+
+
+  fetch('https://edubin-axror.herokuapp.com/home/me/'+token,{
+    headers: {
+      'Authorization': token
+    }
+  })
+  .then(data=>data.json())
+  .then((dataJson)=>{
+    console.log(dataJson)
+    if (dataJson.data===null){
+      window.location.replace("login.html");
+    }
+    let pic =document.getElementById('user-oldPicture');
+    if (dataJson.picture!==null){
+      pic.innerHTML = `<!--<img src="http://localhost:8080/api/image/${dataJson.picture}" width="290px" height="193px"  alt="Me" >-->`;
+      pic.innerHTML = `<img src="https://edubin-axror.herokuapp.com/api/image/${dataJson.picture}" width="290px" height="193px"  alt="Me" >`;
+    }else {
+      pic.innerHTML = `<img src="images/images3.png" width="290px" height="193px" alt="Me">`;
+    }
+    document.getElementById('user-name').innerText=dataJson.name;
+    document.getElementById('user-name1').innerText=dataJson.name;
+    document.getElementById('user-authority').innerText=dataJson.profession;
+    document.getElementById('user-authority1').innerText=dataJson.profession;
+    document.getElementById('user-username').innerText=dataJson.username;
+    document.getElementById('user-email').innerText=dataJson.email;
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+    if (dataJson.birthday!=null){
+      const day = dataJson.birthday[2];
+      const monthIndex = dataJson.birthday[1];
+      const year = dataJson.birthday[0];
+      document.getElementById('user-birthday').innerText=day+" "+monthNames[monthIndex-1]+" "+year;
+    }else {
+      document.getElementById('user-birthday').innerText="-- -- ----";
+    }
+
+    const day1 = dataJson.registeredDate[2];
+    const monthIndex1 = dataJson.registeredDate[1];
+    const year1 = dataJson.registeredDate[0];
+    document.getElementById('user-startOn').innerText=day1+" "+monthNames[monthIndex1-1]+" "+year1;
+
+    document.getElementById('user-course').innerText=dataJson.countCourse;
+    document.getElementById('user-book').innerText=dataJson.countBook;
+
+    if (dataJson.email.includes("superAdmin@gmail.com") || dataJson.email.includes("superAdmin")){
+      const link = document.createElement("a");
+      link.href = "crud-category.html";
+      link.type = "submit";
+      link.className = "profile-edit-btn";
+      link.textContent = "CRUD";
+      document.getElementById('superAdmin').appendChild(link)
+    }
+  })
+</script>
+</html>
+<!--  <script type="text/javascript">-->
+<!--    window.alert = function(){};-->
+<!--    var defaultCSS = document.getElementById('bootstrap-css');-->
+<!--    function changeCSS(css){-->
+<!--      if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');-->
+<!--      else $('head > link').filter(':first').replaceWith(defaultCSS);-->
+<!--    }-->
+<!--    $( document ).ready(function() {-->
+<!--      var iframe_height = parseInt($('html').height());-->
+<!--      // window.parent.postMessage( iframe_height, 'https://bootsnipp.com');-->
+<!--    });-->
+<!--  </script>-->
+
+<!--          <div class="file btn btn-lg btn-primary">-->
+<!--            Change Photo-->
+<!--            <input id="user-NewPicture" type="file" name="file"/>-->
+<!--          </div>-->
